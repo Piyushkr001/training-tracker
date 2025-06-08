@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { uploadResource, deleteResource } from '@/app/actions/resources'
 import { toast } from 'sonner'
-import { UploadCloud, Trash2, FileDown } from 'lucide-react'
+import { UploadCloud, Trash2, FileDown, Loader } from 'lucide-react'
 import { FlickeringGrid } from '@/components/magicui/flickering-grid'
 
 export type Resource = {
@@ -136,6 +136,7 @@ export default function ResourcePage() {
           <Button type="submit" disabled={isUploading || !selectedFile} className="flex items-center gap-2">
             {isUploading ? (
               <>
+              <Loader className='animate-spin'/>
                 <span className="w-4 h-4 border-2 border-t-2 border-gray-200 rounded-full animate-spin" />
                 Uploading...
               </>

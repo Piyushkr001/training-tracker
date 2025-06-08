@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import DataTable from './components/DataTable';
 import PieChartComponent from './components/PieChartComponent';
+import PropertyTypeBarChart from './components/BarChart';
 
 
 
@@ -53,6 +54,11 @@ export default async function WamsiDashboard() {
             <section>
                 <div className="min-h-[500px] w-full">
                     <PieChartComponent data={records} />
+                </div>
+            </section>
+            <section>
+                <div className="min-h-[500px] w-full">
+                    <PropertyTypeBarChart/>
                 </div>
             </section>
         </section>
