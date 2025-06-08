@@ -4,11 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useUser } from '@clerk/nextjs' // Clerk hook
+import { WarpBackground } from '@/components/magicui/warp-background'
 
 export default function LearnMorePage() {
   const { isSignedIn } = useUser()
 
   return (
+    <WarpBackground>
     <section className="min-h-screen px-4 md:px-10 py-10 flex flex-col items-center">
       <div className="max-w-5xl w-full flex flex-col gap-8">
         <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-600 dark:text-blue-400">
@@ -85,5 +87,6 @@ export default function LearnMorePage() {
         </Card>
       </div>
     </section>
+    </WarpBackground>
   )
 }

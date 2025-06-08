@@ -48,7 +48,7 @@ const SideNav = () => {
     }, [])
 
     return (
-        <div className="h-screen p-5 shadow-sm border-r bg-white dark:bg-slate-900 dark:border-slate-700 flex flex-col justify-between">
+        <div className="h-screen p-5 shadow-sm border-r bg-white dark:bg-gradient-to-br dark:from-slate-600 via-slate-700 to-slate-900 dark:border-slate-700 flex flex-col justify-between">
             <div>
                 {/* Logo */}
                 <div className="flex justify-center mb-6">

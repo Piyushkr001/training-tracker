@@ -4,8 +4,24 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { sendContactMessage } from '@/app/actions/contact'
+import { useTransition } from 'react'
+import { toast } from 'sonner'
 
 export default function ContactPage() {
+  const [isPending, startTransition] = useTransition()
+
+  const handleSubmit = async (formData: FormData) => {
+    startTransition(async () => {
+      const res = await sendContactMessage(formData)
+      if (res.success) {
+        toast.success('✅ Message sent successfully.')
+      } else {
+        toast.error('❌ Failed to send message. Please try again.')
+      }
+    })
+  }
+
   return (
     <section className="min-h-screen px-4 md:px-10 py-8 flex flex-col gap-10">
       <div className="text-center max-w-3xl mx-auto">
@@ -47,11 +63,13 @@ export default function ContactPage() {
             <CardTitle>Send a Message</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <form className="flex flex-col gap-4">
-              <Input type="text" placeholder="Your Name" required />
-              <Input type="email" placeholder="Your Email" required />
-              <Textarea placeholder="Your Message" rows={5} required />
-              <Button type="submit" className="self-start">Send</Button>
+            <form action={handleSubmit} className="flex flex-col gap-4">
+              <Input name="name" type="text" placeholder="Your Name" required />
+              <Input name="email" type="email" placeholder="Your Email" required />
+              <Textarea name="message" placeholder="Your Message" rows={5} required />
+              <Button type="submit" disabled={isPending} className="self-start">
+                {isPending ? 'Sending...' : 'Send'}
+              </Button>
             </form>
           </CardContent>
         </Card>

@@ -1,4 +1,4 @@
-import { date, integer, pgTable, serial, timestamp, varchar } from 'drizzle-orm/pg-core'
+import { date, integer, pgTable, serial, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
@@ -53,5 +53,21 @@ export const approvals = pgTable('approvals', {
 export const activityLogs = pgTable('activity_logs', {
   id: serial('id').primaryKey(),
   message: varchar('message'),
+  createdAt: timestamp('created_at').defaultNow(),
+})
+
+export const resources = pgTable('resources', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: varchar('name').notNull(),
+  url: varchar('url').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+})
+
+
+export const contactMessages = pgTable('contact_messages', {
+  id: serial('id').primaryKey(),
+  name: varchar('name').notNull(),
+  email: varchar('email').notNull(),
+  message: varchar('message').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
 })

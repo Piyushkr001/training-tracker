@@ -1,6 +1,7 @@
 import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar';
 import React from 'react'
+import { Toaster } from 'sonner';
 
 function PageLayout({
   children,
@@ -11,6 +12,7 @@ function PageLayout({
     <div suppressHydrationWarning>
         <Navbar/>
         {children}
+         <Toaster richColors position="top-right" />
         <Footer/>
     </div>
   )
