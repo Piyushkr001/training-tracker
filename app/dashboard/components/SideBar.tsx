@@ -1,7 +1,7 @@
 'use client'
 
 import { useUser } from '@clerk/nextjs'
-import { GraduationCapIcon, LayoutDashboard, ViewIcon } from 'lucide-react'
+import { GraduationCapIcon, LayoutDashboard, Search, ViewIcon } from 'lucide-react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -21,6 +21,11 @@ const SideNav = () => {
             name: ' Overview',
             icon: ViewIcon,
             path: '/dashboard/overview',
+        },
+        {
+            name: ' Explore Property Data',
+            icon: Search,
+            path: '/dashboard/explore',
         },
         {
             name: ' Wardens',
