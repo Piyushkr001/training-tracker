@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { uploadResource, deleteResource } from '@/app/actions/resources'
+import { uploadResource, deleteResource, getResources } from '@/app/actions/resources'
 import { toast } from 'sonner'
 import { UploadCloud, Trash2, FileDown, Loader } from 'lucide-react'
 import { FlickeringGrid } from '@/components/magicui/flickering-grid'
@@ -44,12 +44,27 @@ export default function ResourcePage() {
   const [filePreviewUrl, setFilePreviewUrl] = useState<string | null>(null)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
+  // ✅ Fetch all resources from DB + combine with samples
   useEffect(() => {
-    const normalized = sampleResources.map((res) => ({
-      ...res,
-      id: String(res.id),
-    }))
-    setResources(normalized)
+    async function fetchResources() {
+      try {
+        const real = await getResources()
+        const realFormatted: Resource[] = real.map((r) => ({
+          ...r,
+          id: String(r.id),
+          createdAt: new Date(r.createdAt).toISOString(),
+        }))
+        const samplesFormatted = sampleResources.map((s) => ({
+          ...s,
+          id: String(s.id),
+        }))
+        setResources([...samplesFormatted, ...realFormatted])
+      } catch {
+        toast.error('❌ Failed to fetch resources.')
+      }
+    }
+
+    fetchResources()
   }, [])
 
   useEffect(() => {
@@ -136,8 +151,7 @@ export default function ResourcePage() {
           <Button type="submit" disabled={isUploading || !selectedFile} className="flex items-center gap-2">
             {isUploading ? (
               <>
-              <Loader className='animate-spin'/>
-                <span className="w-4 h-4 border-2 border-t-2 border-gray-200 rounded-full animate-spin" />
+                <Loader className="animate-spin" />
                 Uploading...
               </>
             ) : (
@@ -149,15 +163,11 @@ export default function ResourcePage() {
           </Button>
         </form>
 
-        {/* Preview Section */}
+        {/* PDF Preview */}
         {filePreviewUrl && selectedFile?.type === 'application/pdf' && (
           <div className="mt-6 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md overflow-hidden">
             <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-300 mb-2">📄 Preview: {selectedFile.name}</h2>
-            <iframe
-              src={filePreviewUrl}
-              title="PDF Preview"
-              className="w-full h-[500px] border rounded-lg"
-            />
+            <iframe src={filePreviewUrl} title="PDF Preview" className="w-full h-[500px] border rounded-lg" />
           </div>
         )}
 
