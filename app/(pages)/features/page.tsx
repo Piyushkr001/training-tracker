@@ -46,7 +46,7 @@ export default function FeaturesPage() {
           Key Features
         </h1>
         <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm md:text-base">
-          Explore the core features of the Drill Desk platform.
+          Explore the core features of the KGBV Training platform.
         </p>
       </div>
 

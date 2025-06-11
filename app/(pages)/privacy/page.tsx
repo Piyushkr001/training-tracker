@@ -16,7 +16,7 @@ export default function PrivacyPage() {
           </CardHeader>
           <CardContent className="text-sm md:text-base text-gray-700 dark:text-gray-300 space-y-4">
             <p>
-              Drill Desk is committed to protecting your privacy. This Privacy Policy explains how we collect, use,
+              KGBV Training is committed to protecting your privacy. This Privacy Policy explains how we collect, use,
               and safeguard your personal information when you use our platform.
             </p>
           </CardContent>
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
             <CardContent className="text-sm md:text-base text-gray-700 dark:text-gray-300">
               <p>
                 If you have any questions about this Privacy Policy, please contact us at{' '}
-                <strong>privacy@drilldesk.io</strong>.
+                <strong>privacy@kgbvtraining.io</strong>.
               </p>
             </CardContent>
           </Card>

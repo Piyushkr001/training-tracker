@@ -40,7 +40,7 @@ export default function ContactPage() {
           <CardContent className="space-y-4 text-sm text-gray-700 dark:text-gray-300">
             <div>
               <strong>Email:</strong>
-              <p>support@drilldesk.io</p>
+              <p>support@kgbvtraining.io</p>
             </div>
             <div>
               <strong>Phone:</strong>
@@ -49,7 +49,7 @@ export default function ContactPage() {
             <div>
               <strong>Office Address:</strong>
               <p>
-                Drill Desk HQ<br />
+                KGBV HQ<br />
                 123 Safety Lane<br />
                 New Delhi, India
               </p>

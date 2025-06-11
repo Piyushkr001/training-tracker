@@ -14,16 +14,16 @@ export default function LearnMorePage() {
     <section className="min-h-screen px-4 md:px-10 py-10 flex flex-col items-center">
       <div className="max-w-5xl w-full flex flex-col gap-8">
         <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-600 dark:text-blue-400">
-          Learn More About Drill Desk
+          Learn More About KGBV Training Tracker
         </h1>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl md:text-2xl">What is Drill Desk?</CardTitle>
+            <CardTitle className="text-xl md:text-2xl">What is KGBV Training Tracker?</CardTitle>
           </CardHeader>
           <CardContent className="text-sm md:text-base text-gray-700 dark:text-gray-300 space-y-4">
             <p>
-              Drill Desk is a comprehensive platform designed to help safety wardens and emergency personnel plan,
+              KGBV Training Tracker is a comprehensive platform designed to help safety wardens and emergency personnel plan,
               track, and analyze their training and response readiness.
             </p>
             <p>
@@ -36,7 +36,7 @@ export default function LearnMorePage() {
         <div className="flex flex-col md:flex-row gap-6">
           <Card className="flex-1">
             <CardHeader>
-              <CardTitle className="text-lg md:text-xl">Why Choose Drill Desk?</CardTitle>
+              <CardTitle className="text-lg md:text-xl">Why Choose KGBV Training?</CardTitle>
             </CardHeader>
             <CardContent className="text-sm md:text-base text-gray-700 dark:text-gray-300 space-y-3">
               <ul className="list-disc pl-6 space-y-2">
